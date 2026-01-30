@@ -1,6 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <header>
+    <nav>
+        <a href="#home" class="logo">
+            <img src="img/eneelo-logo.png" alt="ENEELO - Energia Solar Inteligente">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Início</a></li>
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#processo">Processo</a></li>
+            <li><a href="#contato">Contato</a></li>
+        </ul>
+    </nav>
+</header>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ENEELO | Energia Solar Inteligente</title>
@@ -912,5 +926,37 @@
             lastScroll = currentScroll;
         });
     </script>
+    <script>
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const telefone = document.getElementById('telefone').value.trim();
+    const mensagem = document.getElementById('mensagem').value.trim();
+
+    if (!nome || !email || !telefone || !mensagem) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+    }
+
+    const texto = 
+`Olá! Gostaria de um orçamento de energia solar ☀️
+
+👤 Nome: ${nome}
+📧 E-mail: ${email}
+📱 Telefone: ${telefone}
+
+📝 Mensagem:
+${mensagem}`;
+
+    const numeroWhatsApp = '5541999999999'; // <-- TROQUE PELO SEU NÚMERO
+    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
+
+    window.open(url, '_blank');
+});
+</script>
+
+    
 </body>
 </html>
