@@ -3,961 +3,914 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BL COMPANY | Playbook Vol. 1: Prospecção de Elite</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>ENEELO | Energia Solar Inteligente</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        teal: {
-                            400: '#2dd4bf', 
-                            500: '#14b8a6',
-                            600: '#0d9488',
-                            900: '#134e4a',
-                        },
-                        black: {
-                            DEFAULT: '#000000',
-                            paper: '#080808',
-                            900: '#050505',
-                            800: '#0a0a0a',
-                        }
-                    },
-                    fontFamily: {
-                        heading: ['Montserrat', 'sans-serif'],
-                        body: ['Merriweather', 'serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
-                    },
-                }
+    <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@300;600;800&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #5A6B4C;
+            --primary-dark: #475638;
+            --primary-light: #6F8059;
+            --accent: #8B9D78;
+            --white: #FFFFFF;
+            --off-white: #F8F9F6;
+            --text-dark: #2C3426;
+            --shadow: rgba(90, 107, 76, 0.15);
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            background: var(--off-white);
+        }
+
+        /* Header Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(90, 107, 76, 0.1);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
             }
         }
-    </script>
-    <style>
-        body {
-            background-color: #1a1a1a;
-            color: #d1d5db;
-            font-size: 10pt; /* Fonte base otimizada para densidade */
-            line-height: 1.5;
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        /* Página A4 Rígida */
-        .a4-page {
-            width: 210mm;
-            height: 297mm; /* Altura fixa */
-            padding: 15mm 20mm; /* Margens otimizadas */
-            margin: 10mm auto;
-            background-color: #080808;
-            box-shadow: 0 0 25px rgba(0,0,0,0.7);
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 400;
+            font-size: 0.95rem;
+            letter-spacing: 0.05em;
             position: relative;
-            overflow: hidden; /* Garante que nada vaze */
-            border: 1px solid #1f1f1f;
-            page-break-after: always;
-            display: flex;
-            flex-direction: column;
+            transition: color 0.3s ease;
         }
 
-        /* Elementos de Identidade */
-        .page-header {
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 85px;
+            min-height: 90vh;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            position: relative;
+            overflow: hidden;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #2dd4bf;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .page-footer {
-            margin-top: auto;
-            border-top: 1px solid #333;
-            padding-top: 10px;
-            display: flex;
-            justify-content: space-between;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 8pt;
-            color: #666;
         }
 
-        .chapter-title {
-            font-family: 'Montserrat', sans-serif;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60%;
+            height: 100%;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 50px,
+                    rgba(255, 255, 255, 0.02) 50px,
+                    rgba(255, 255, 255, 0.02) 100px
+                );
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4rem;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Anybody', sans-serif;
+            font-size: 5.5rem;
             font-weight: 800;
-            font-size: 22pt;
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: -0.5px;
-            margin-bottom: 15px;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
         }
 
-        .sub-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 13pt;
-            color: #2dd4bf;
-            margin-top: 15px;
-            margin-bottom: 8px;
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+
+        .btn {
+            padding: 1.2rem 3rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.05em;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px var(--shadow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--white);
+            padding: 5rem 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+            max-width: 1400px;
+            margin: -80px auto 0;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px var(--shadow);
+            position: relative;
+            z-index: 10;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Anybody', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-dark);
+            opacity: 0.8;
+            letter-spacing: 0.05em;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 8rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Anybody', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            letter-spacing: -0.02em;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px var(--shadow);
+            border-color: var(--primary);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-family: 'Anybody', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: var(--text-dark);
+            opacity: 0.85;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Process Section */
+        .process {
+            background: var(--primary);
+            padding: 8rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .process-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .process .section-title {
+            color: var(--white);
+            margin-bottom: 4rem;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            font-family: 'Anybody', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .step h3 {
+            font-family: 'Anybody', sans-serif;
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .step p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 4rem;
+            background: var(--off-white);
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-family: 'Anybody', sans-serif;
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 3rem;
+            opacity: 0.85;
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--white);
+            padding: 8rem 4rem;
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+        }
+
+        .contact-info h2 {
+            font-family: 'Anybody', sans-serif;
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-weight: 800;
+        }
+
+        .contact-details {
+            margin-top: 3rem;
+        }
+
+        .contact-item {
             display: flex;
             align-items: center;
-        }
-        .sub-title i { margin-right: 8px; font-size: 0.9em; }
-
-        /* Caixas de Conteúdo */
-        .concept-box {
-            background-color: #111;
-            border: 1px solid #333;
-            padding: 12px;
-            border-radius: 4px;
-            margin-bottom: 12px;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
         }
 
-        .script-box {
-            font-family: 'JetBrains Mono', monospace;
-            background-color: #0d0d0d;
-            border-left: 3px solid #2dd4bf;
-            padding: 12px;
-            margin: 10px 0;
-            color: #a7f3d0;
-            font-size: 8.5pt;
-            line-height: 1.4;
+        .contact-item-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.3rem;
+            flex-shrink: 0;
         }
 
-        .alert-box {
-            background: rgba(220, 38, 38, 0.1);
-            border: 1px solid rgba(220, 38, 38, 0.3);
-            padding: 10px;
-            border-radius: 4px;
-            color: #fca5a5;
-            font-size: 9pt;
+        .contact-item-text {
+            font-size: 1.1rem;
+            color: var(--text-dark);
         }
 
-        .success-box {
-            background: rgba(45, 212, 191, 0.05);
-            border: 1px solid #134e4a;
-            padding: 10px;
-            border-radius: 4px;
-            margin-bottom: 10px;
+        .contact-form {
+            background: var(--off-white);
+            padding: 3rem;
+            border-radius: 15px;
         }
 
-        /* Impressão */
-        @media print {
-            body { background-color: #080808; margin: 0; }
-            .a4-page { margin: 0; box-shadow: none; border: none; width: 100%; height: 100%; page-break-after: always; }
-            .no-print { display: none !important; }
-            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 1rem;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.05em;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 4rem 4rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Anybody', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: 0.3em;
+        }
+
+        .footer-logo img {
+            height: 60px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-text {
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--white);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .hero-content,
+            .services,
+            .process-content,
+            .cta-section,
+            .contact {
+                padding: 4rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .stats {
+                margin: 2rem;
+                padding: 3rem 2rem;
+            }
+
+            .services-grid,
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body class="antialiased">
-
-    <!-- Botão Download -->
-    <div class="fixed bottom-8 right-8 z-50 no-print">
-        <button onclick="window.print()" class="bg-teal-500 hover:bg-white text-black font-heading font-bold py-4 px-6 shadow-lg flex items-center gap-2 border border-teal-400 rounded transition-all">
-            <i class="fas fa-print"></i> IMPRIMIR / SALVAR PDF (20 PÁG)
-        </button>
-    </div>
-
-    <!-- PÁGINA 1: CAPA -->
-    <div class="a4-page flex flex-col justify-center items-center text-center relative border-8 border-double border-teal-900">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-teal-900/20 via-black to-black"></div>
-        <div class="z-10 w-full max-w-2xl">
-            <p class="font-heading font-bold text-teal-500 tracking-[0.5em] uppercase text-xs mb-8">Playbook de Processos Comerciais</p>
-            <h1 class="text-8xl font-heading font-black text-white mb-2 leading-none">
-                VOLUME<br><span class="text-teal-400">UM</span>
-            </h1>
-            <div class="w-24 h-2 bg-white mx-auto my-8"></div>
-            <h2 class="text-3xl font-heading font-bold text-white uppercase tracking-widest mb-4">
-                Prospecção & Cadência
-            </h2>
-            <p class="text-gray-400 font-body text-sm max-w-md mx-auto">
-                Metodologia avançada para geração de demanda, scripts de alta conversão e engenharia de fluxo de contato.
-            </p>
-        </div>
-        <div class="absolute bottom-10 left-0 w-full text-center">
-            <p class="text-white font-bold font-heading text-xl">BL COMPANY</p>
-            <p class="text-xs text-gray-600 mt-2">Uso Exclusivo e Confidencial</p>
-        </div>
-    </div>
-
-    <!-- PÁGINA 2: INTRODUÇÃO E MINDSET -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Fundamentos</span>
-        </div>
-        
-        <h2 class="chapter-title">O Novo Jogo da Prospecção</h2>
-        
-        <div class="prose prose-invert prose-sm max-w-none text-gray-300 text-justify">
-            <p>O mercado mudou. O cliente médio hoje recebe entre 4.000 a 10.000 mensagens de marketing por dia. A velha escola de vendas ("spray and pray" - atirar para todo lado e rezar) não funciona mais. Na BL COMPANY, adotamos a metodologia de <strong>Prospecção de Precisão</strong>.</p>
-            
-            <h3 class="sub-title"><i class="fas fa-chess-knight"></i> Hunter vs. Farmer</h3>
-            <div class="concept-box">
-                <p class="mb-2"><strong>O Erro Comum:</strong> Misturar perfis. Colocar quem gosta de cuidar de clientes (Farmer) para abrir novos negócios (Hunter) resulta em fracasso. Este volume é dedicado ao espírito HUNTER.</p>
-                <ul class="list-disc pl-4 text-sm mt-2 space-y-1">
-                    <li><strong>Alta Tolerância à Rejeição:</strong> O "não" é estatística, não ofensa pessoal.</li>
-                    <li><strong>Agressividade Controlada:</strong> Incomodar o cliente o suficiente para tirá-lo da inércia, mas não o bastante para irritá-lo.</li>
-                    <li><strong>Curiosidade Intelectual:</strong> Entender o negócio do cliente antes de ligar.</li>
-                </ul>
-            </div>
-
-            <h3 class="sub-title"><i class="fas fa-brain"></i> A Economia da Atenção</h3>
-            <p>Você não está competindo com seu concorrente na primeira ligação. Você está competindo com o Instagram, com o e-mail do chefe, com o problema na produção. Seu objetivo na prospecção <strong>não é vender o produto</strong>.</p>
-            
-            <div class="success-box text-center font-bold text-white mt-4">
-                OBJETIVO ÚNICO DA PROSPECÇÃO = VENDER A REUNIÃO
-            </div>
-            <p class="mt-4">Se você tentar explicar seu produto no primeiro contato frio, você perdeu. O objetivo é despertar curiosidade suficiente para ganhar 15 ou 30 minutos de atenção exclusiva em um segundo momento.</p>
-        </div>
-
-        <div class="page-footer">
-            <span>Metodologia Validada</span>
-            <span>02</span>
-        </div>
-    </div>
-
-    <!-- PÁGINA 3: PREPARAÇÃO (ICP) -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Preparação</span>
-        </div>
-
-        <h2 class="chapter-title">Quem é o Alvo? (ICP)</h2>
-        
-        <div class="prose prose-invert prose-sm max-w-none text-gray-300 text-justify">
-            <p>Atirar no alvo errado é o desperdício mais caro de uma operação comercial. Antes de escrever qualquer script, precisamos definir o <strong>Ideal Customer Profile (ICP)</strong>.</p>
-
-            <h3 class="sub-title"><i class="fas fa-filter"></i> A Matriz de Fit</h3>
-            <p>Use esta tabela para validar se a lista de leads que você recebeu vale o seu tempo.</p>
-
-            <table class="w-full text-xs text-left border-collapse mt-4 mb-6">
-                <thead>
-                    <tr class="bg-teal-900 text-white border border-teal-700">
-                        <th class="p-2">Critério</th>
-                        <th class="p-2">Sinal Verde (Avançar)</th>
-                        <th class="p-2">Sinal Vermelho (Descartar)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="border border-neutral-800">
-                        <td class="p-2 font-bold text-teal-400">Tamanho/Porte</td>
-                        <td class="p-2">Empresas com [X] a [Y] funcionários. Faturamento > R$ [Z].</td>
-                        <td class="p-2">Microempresas sem caixa ou Gigantes burocráticas (se não for o foco).</td>
-                    </tr>
-                    <tr class="border border-neutral-800">
-                        <td class="p-2 font-bold text-teal-400">Tecnologia</td>
-                        <td class="p-2">Já usam CRM, Marketing Digital ou ferramentas similares.</td>
-                        <td class="p-2">Processos 100% analógicos/papel (Custo de educação alto demais).</td>
-                    </tr>
-                    <tr class="border border-neutral-800">
-                        <td class="p-2 font-bold text-teal-400">Momento</td>
-                        <td class="p-2">Contratando, expandindo, captou investimento.</td>
-                        <td class="p-2">Demissões em massa, fusão recente, crise de RP.</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <h3 class="sub-title"><i class="fas fa-user-tag"></i> A Persona do Decisor</h3>
-            <p>Não vendemos para CNPJs, vendemos para CPFs. Quem assina o cheque?</p>
-            <div class="grid grid-cols-2 gap-4 mt-2">
-                <div class="concept-box">
-                    <strong class="text-white block mb-2">O Econômico (CFO/CEO)</strong>
-                    <ul class="list-disc pl-4 text-xs">
-                        <li>Foca em ROI.</li>
-                        <li>Quer saber "quanto custa" e "quanto retorna".</li>
-                        <li>Odeia detalhes técnicos.</li>
-                    </ul>
-                </div>
-                <div class="concept-box">
-                    <strong class="text-white block mb-2">O Usuário (Gerente)</strong>
-                    <ul class="list-disc pl-4 text-xs">
-                        <li>Foca em facilidade de uso.</li>
-                        <li>Quer saber "como isso facilita meu dia".</li>
-                        <li>Tem medo de mudança complexa.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="page-footer">
-            <span>Definição de Alvo</span>
-            <span>03</span>
-        </div>
-    </div>
-
-    <!-- PÁGINA 4: ENGENHARIA DE CADÊNCIA -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Processo</span>
-        </div>
-
-        <h2 class="chapter-title">A Ciência da Cadência</h2>
-        <div class="prose prose-invert prose-sm max-w-none text-gray-300 text-justify">
-            <p>Cadência é um plano sistemático de interações. Dados da <em>InsideSales.com</em> mostram que <strong>50% das vendas vão para o vendedor que responde primeiro</strong>, mas <strong>80% das vendas requerem 5 follow-ups</strong>.</p>
-
-            <h3 class="sub-title"><i class="fas fa-layer-group"></i> Elementos da Cadência</h3>
-            <ul class="list-none space-y-2 mb-4">
-                <li class="flex items-center"><span class="w-20 font-bold text-white">Tentativas:</span> Quantas vezes tentamos contato? (Min: 8, Max: 15).</li>
-                <li class="flex items-center"><span class="w-20 font-bold text-white">Meios:</span> Quais canais? (Tel, Email, Zap, Social).</li>
-                <li class="flex items-center"><span class="w-20 font-bold text-white">Duração:</span> Por quanto tempo? (Ciclo de 15 a 25 dias).</li>
-                <li class="flex items-center"><span class="w-20 font-bold text-white">Espaçamento:</span> Intervalo entre contatos (D1, D3, D5...).</li>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <img src="eneelo-logo.jpeg" alt="ENEELO - Energia Solar">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Início</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#processo">Processo</a></li>
+                <li><a href="#contato">Contato</a></li>
             </ul>
+        </nav>
+    </header>
 
-            <h3 class="sub-title"><i class="fas fa-project-diagram"></i> Estrutura de Fluxo Misto</h3>
-            <p>O gráfico abaixo representa a intensidade da nossa cadência padrão.</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Energia Solar<br>para o Futuro</h1>
+            <p class="hero-subtitle">Transforme sua propriedade com usinas solares de alta performance. Economia inteligente, sustentabilidade garantida.</p>
+            <div class="cta-buttons">
+                <a href="#contato" class="btn btn-primary">Solicitar Orçamento</a>
+                <a href="#servicos" class="btn btn-secondary">Nossos Serviços</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat-item">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">USINAS INSTALADAS</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">15MW</span>
+            <span class="stat-label">CAPACIDADE GERADA</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">98%</span>
+            <span class="stat-label">SATISFAÇÃO</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">10+</span>
+            <span class="stat-label">ANOS DE EXPERIÊNCIA</span>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section id="servicos" class="services fade-in">
+        <h2 class="section-title">Nossas Soluções</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-icon">☀️</span>
+                <h3>Usinas Residenciais</h3>
+                <p>Sistemas fotovoltaicos completos para residências. Reduza sua conta de energia em até 95% com tecnologia de ponta e garantia estendida.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🏢</span>
+                <h3>Usinas Comerciais</h3>
+                <p>Soluções escaláveis para empresas de todos os portes. Maximize seu ROI com projetos personalizados e manutenção preventiva inclusa.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🌾</span>
+                <h3>Usinas Rurais</h3>
+                <p>Energia solar para propriedades rurais e agronegócio. Sistemas robustos projetados para alta demanda energética e condições adversas.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🔧</span>
+                <h3>Manutenção Premium</h3>
+                <p>Planos de manutenção preventiva e corretiva. Garantimos a máxima eficiência da sua usina com monitoramento 24/7.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">📊</span>
+                <h3>Consultoria Técnica</h3>
+                <p>Análise de viabilidade e dimensionamento preciso. Nossos engenheiros garantem o melhor projeto para sua necessidade.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">💰</span>
+                <h3>Financiamento</h3>
+                <p>Parceria com as melhores instituições financeiras. Condições especiais e aprovação facilitada para seu projeto solar.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="processo" class="process fade-in">
+        <div class="process-content">
+            <h2 class="section-title">Como Funciona</h2>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">01</div>
+                    <h3>Visita Técnica</h3>
+                    <p>Nossa equipe analisa seu local, consumo energético e viabilidade técnica do projeto gratuitamente.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">02</div>
+                    <h3>Projeto Personalizado</h3>
+                    <p>Desenvolvemos um projeto sob medida com dimensionamento preciso e simulação de economia.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">03</div>
+                    <h3>Instalação Profissional</h3>
+                    <p>Equipe certificada instala sua usina com os mais altos padrões de qualidade e segurança.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">04</div>
+                    <h3>Monitoramento</h3>
+                    <p>Acompanhe em tempo real a geração de energia e economia através de nosso app exclusivo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section fade-in">
+        <div class="cta-content">
+            <h2>Pronto para Economizar?</h2>
+            <p>Junte-se a centenas de clientes satisfeitos que já reduziram drasticamente seus custos com energia elétrica.</p>
+            <a href="#contato" class="btn btn-primary">Faça Seu Orçamento Grátis</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="contact fade-in">
+        <div class="contact-content">
+            <div class="contact-info">
+                <h2>Entre em Contato</h2>
+                <p>Estamos prontos para atender você e tirar todas as suas dúvidas sobre energia solar.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📱</div>
+                        <div class="contact-item-text">
+                            <strong>Telefone</strong><br>
+                            (41) 9 9999-9999
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">✉️</div>
+                        <div class="contact-item-text">
+                            <strong>Email</strong><br>
+                            contato@eneelo.com.br
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">📍</div>
+                        <div class="contact-item-text">
+                            <strong>Endereço</strong><br>
+                            Curitiba, Paraná
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form onsubmit="event.preventDefault(); alert('Obrigado pelo contato! Retornaremos em breve.');">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Enviar Mensagem</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="eneelo-logo.jpeg" alt="ENEELO">
+            </div>
+            <p class="footer-text">Energia solar inteligente para um futuro sustentável</p>
             
-            <div class="mt-4 border border-neutral-800 p-4 bg-black relative h-48 flex items-end justify-between px-2 gap-1">
-                <!-- Barras simuladas com CSS -->
-                <div class="w-full bg-teal-900/50 flex flex-col justify-end items-center pb-2"><div class="w-4 h-32 bg-teal-500 mb-1"></div><span class="text-[8px] text-white">D1</span></div>
-                <div class="w-full bg-neutral-900 flex flex-col justify-end items-center pb-2"><div class="w-4 h-10 bg-neutral-600 mb-1"></div><span class="text-[8px] text-gray-500">D2</span></div>
-                <div class="w-full bg-neutral-900 flex flex-col justify-end items-center pb-2"><div class="w-4 h-24 bg-teal-600 mb-1"></div><span class="text-[8px] text-gray-500">D3</span></div>
-                <div class="w-full bg-neutral-900 flex flex-col justify-end items-center pb-2"><div class="w-4 h-0 mb-1"></div><span class="text-[8px] text-gray-500">D4</span></div>
-                <div class="w-full bg-neutral-900 flex flex-col justify-end items-center pb-2"><div class="w-4 h-20 bg-teal-700 mb-1"></div><span class="text-[8px] text-gray-500">D5</span></div>
-                <div class="w-full bg-neutral-900 flex flex-col justify-end items-center pb-2"><div class="w-4 h-8 bg-neutral-600 mb-1"></div><span class="text-[8px] text-gray-500">D6</span></div>
-                <div class="w-full bg-neutral-900 flex flex-col justify-end items-center pb-2"><div class="w-4 h-16 bg-teal-800 mb-1"></div><span class="text-[8px] text-gray-500">D8</span></div>
-                <div class="w-full bg-neutral-900 flex flex-col justify-end items-center pb-2"><div class="w-4 h-32 bg-red-600 mb-1"></div><span class="text-[8px] text-white">D12</span></div>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram">📷</a>
+                <a href="#" aria-label="Facebook">👤</a>
+                <a href="#" aria-label="LinkedIn">💼</a>
+                <a href="#" aria-label="WhatsApp">💬</a>
             </div>
-            <p class="text-xs text-center mt-2 text-gray-500">Intensidade de Contato por Dia (Altura = Nº de touchpoints)</p>
-        </div>
-
-        <div class="page-footer">
-            <span>Cadência</span>
-            <span>04</span>
-        </div>
-    </div>
-
-    <!-- PÁGINA 5: FLUXO PRÁTICO OUTBOUND -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Execução</span>
-        </div>
-
-        <h2 class="chapter-title">Fluxo Outbound (Hunter)</h2>
-        <p class="text-sm text-gray-300 mb-6">Para leads que NÃO levantaram a mão. Objetivo: Interrupção e Curiosidade.</p>
-
-        <div class="space-y-4">
-            <!-- Dia 1 -->
-            <div class="flex border border-neutral-800 bg-neutral-900/50">
-                <div class="bg-teal-600 text-black font-bold p-4 flex items-center justify-center w-16">D1</div>
-                <div class="p-4 w-full">
-                    <strong class="text-white block mb-1">Ataque Coordenado</strong>
-                    <ul class="text-xs text-gray-400 space-y-1">
-                        <li><i class="fas fa-phone mr-1"></i> Ligação (Manhã) - Sem deixar recado.</li>
-                        <li><i class="fab fa-linkedin mr-1"></i> LinkedIn: Visualizar perfil + Pedido de Conexão (Sem nota).</li>
-                        <li><i class="fas fa-envelope mr-1"></i> E-mail 1: "Sobre [Empresa dele] e [Problema]".</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Dia 3 -->
-            <div class="flex border border-neutral-800 bg-neutral-900/50">
-                <div class="bg-neutral-700 text-white font-bold p-4 flex items-center justify-center w-16">D3</div>
-                <div class="p-4 w-full">
-                    <strong class="text-white block mb-1">Tentativa Telefônica</strong>
-                    <ul class="text-xs text-gray-400 space-y-1">
-                        <li><i class="fas fa-phone mr-1"></i> Ligação (Tarde) - Horário diferente do D1.</li>
-                        <li><i class="fas fa-comment mr-1"></i> Se não atender: Não deixar recado.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Dia 5 -->
-            <div class="flex border border-neutral-800 bg-neutral-900/50">
-                <div class="bg-neutral-700 text-white font-bold p-4 flex items-center justify-center w-16">D5</div>
-                <div class="p-4 w-full">
-                    <strong class="text-white block mb-1">O "Bump"</strong>
-                    <ul class="text-xs text-gray-400 space-y-1">
-                        <li><i class="fas fa-envelope mr-1"></i> E-mail 2: Reply no primeiro e-mail. "Vi que não conseguimos nos falar..."</li>
-                        <li><i class="fab fa-whatsapp mr-1"></i> WhatsApp (Texto): "Oi [Nome], te mandei um e-mail, conseguiu ver?"</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Dia 8 -->
-            <div class="flex border border-neutral-800 bg-neutral-900/50">
-                <div class="bg-neutral-700 text-white font-bold p-4 flex items-center justify-center w-16">D8</div>
-                <div class="p-4 w-full">
-                    <strong class="text-white block mb-1">Entrega de Valor</strong>
-                    <ul class="text-xs text-gray-400 space-y-1">
-                        <li><i class="fas fa-phone mr-1"></i> Ligação (Manhã).</li>
-                        <li><i class="fas fa-envelope mr-1"></i> E-mail 3: Enviar um Case de Sucesso do setor dele. Sem pedir reunião, apenas educar.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="page-footer">
-            <span>Fluxograma Outbound</span>
-            <span>05</span>
-        </div>
-    </div>
-
-    <!-- PÁGINA 6: FLUXO PRÁTICO INBOUND -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Execução</span>
-        </div>
-
-        <h2 class="chapter-title">Fluxo Inbound (Levantada de Mão)</h2>
-        <p class="text-sm text-gray-300 mb-6">Para leads que preencheram formulário ou baixaram material. Fator crítico: Velocidade.</p>
-
-        <div class="alert-box mb-6">
-            <strong><i class="fas fa-exclamation-circle"></i> ATENÇÃO:</strong> O primeiro contato deve ocorrer em até 5 minutos após a conversão.
-        </div>
-
-        <div class="space-y-4">
-            <!-- Minuto 0-5 -->
-            <div class="flex border border-teal-500 bg-teal-900/20">
-                <div class="bg-teal-500 text-black font-bold p-4 flex items-center justify-center w-16 text-xs text-center">0-5<br>min</div>
-                <div class="p-4 w-full">
-                    <strong class="text-white block mb-1">Contato Imediato</strong>
-                    <ul class="text-xs text-gray-300 space-y-1">
-                        <li><i class="fas fa-phone mr-1"></i> Ligação: "Vi que você acabou de baixar nosso material..."</li>
-                        <li><i class="fab fa-whatsapp mr-1"></i> WhatsApp (Automático se possível): "Olá, vi seu interesse. Posso te ligar agora?"</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Dia 1 (Tarde) -->
-            <div class="flex border border-neutral-800 bg-neutral-900/50">
-                <div class="bg-neutral-700 text-white font-bold p-4 flex items-center justify-center w-16">D1</div>
-                <div class="p-4 w-full">
-                    <strong class="text-white block mb-1">Tentativa 2 (Se falhou na manhã)</strong>
-                    <ul class="text-xs text-gray-400 space-y-1">
-                        <li><i class="fas fa-phone mr-1"></i> Ligação.</li>
-                        <li><i class="fas fa-envelope mr-1"></i> E-mail 1: "Tentei te ligar para tirar dúvidas sobre o material que baixou."</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Dia 2 -->
-            <div class="flex border border-neutral-800 bg-neutral-900/50">
-                <div class="bg-neutral-700 text-white font-bold p-4 flex items-center justify-center w-16">D2</div>
-                <div class="p-4 w-full">
-                    <strong class="text-white block mb-1">Aprofundamento</strong>
-                    <ul class="text-xs text-gray-400 space-y-1">
-                        <li><i class="fab fa-whatsapp mr-1"></i> Áudio no WhatsApp: "Oi, só pra garantir que você recebeu o material..."</li>
-                        <li><i class="fas fa-share-alt mr-1"></i> Envio de material complementar.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="page-footer">
-            <span>Fluxograma Inbound</span>
-            <span>06</span>
-        </div>
-    </div>
-
-    <!-- PÁGINA 7: SCRIPT DE COLD CALL (ESTRUTURA) -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Scripts</span>
-        </div>
-
-        <h2 class="chapter-title">Cold Call:<br>Abertura de Elite</h2>
-        <div class="prose prose-invert prose-sm max-w-none text-gray-300 text-justify">
-            <p>O maior erro em Cold Calls é tentar ser simpático demais ("Como você está?"). Isso grita "Vendedor". Use a técnica de <strong>Pattern Interrupt</strong> (Quebra de Padrão).</p>
-
-            <h3 class="sub-title"><i class="fas fa-microphone-alt"></i> Script: A Permissão Negativa</h3>
             
-            <div class="script-box">
-                <strong>Vendedor:</strong> "Alô, [Nome do Lead]?"<br><br>
-                <strong>Lead:</strong> "Sim, sou eu."<br><br>
-                <strong>Vendedor:</strong> "[Nome], aqui é o [Seu Nome] da BL Company. Vou ser bem transparente: essa é uma ligação fria, você não me conhece e eu estou te interrompendo. Quer desligar agora ou me dá 30 segundos pra eu te explicar porque resolvi te ligar e você decide se continuamos?"<br><br>
-                <span class="text-teal-500 font-bold">[SILÊNCIO ABSOLUTO - NÃO FALE NADA]</span>
-            </div>
-
-            <div class="concept-box mt-4">
-                <strong class="text-white text-sm mb-2 block">Por que funciona?</strong>
-                <p class="text-xs">
-                    1. <strong>Honestidade Radical:</strong> Você admite que é uma interrupção.<br>
-                    2. <strong>Controle:</strong> Você dá a ele o poder de desligar (ele se sente seguro).<br>
-                    3. <strong>Curiosidade:</strong> Ninguém nunca diz isso. Ele vai querer ouvir os 30 segundos.
-                </p>
-            </div>
+            <p class="copyright">© 2026 ENEELO. Todos os direitos reservados.</p>
         </div>
+    </footer>
 
-        <div class="page-footer">
-            <span>Cold Call - Abertura</span>
-            <span>07</span>
-        </div>
-    </div>
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
 
-    <!-- PÁGINA 8: SCRIPT DE COLD CALL (PITCH) -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Scripts</span>
-        </div>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
 
-        <h2 class="chapter-title">Cold Call:<br>O Pitch de 30s</h2>
-        <div class="prose prose-invert prose-sm max-w-none text-gray-300 text-justify">
-            <p>Após ele dizer "Pode falar", você tem 30 segundos. Não fale do seu produto. Fale do <strong>Problema</strong> que você resolve para empresas parecidas com a dele.</p>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-            <h3 class="sub-title">Estrutura: Problema + Prova Social + Gancho</h3>
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Header scroll effect
+        let lastScroll = 0;
+        const header = document.querySelector('header');
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
             
-            <div class="script-box">
-                <strong>Vendedor:</strong> "Obrigado. O motivo do meu contato é que nós trabalhamos especificamente com [Segmento do Lead] para resolver [Problema Agudo 1] e [Problema Agudo 2].<br><br>
-                Recentemente ajudamos a [Nome de Concorrente ou Empresa Parecida] a reduzir em [X%] esse custo operacional aplicando nossa metodologia.<br><br>
-                Eu não sei se isso é uma prioridade para você hoje, mas queria saber: como vocês estão lidando com [Problema 1] aí na empresa hoje?"
-            </div>
-
-            <div class="alert-box mt-4">
-                <strong>Regra de Ouro:</strong> Termine sempre com uma PERGUNTA ABERTA. Se você terminar com uma afirmação, a ligação morre.
-            </div>
-        </div>
-
-        <div class="page-footer">
-            <span>Cold Call - Pitch</span>
-            <span>08</span>
-        </div>
-    </div>
-
-    <!-- PÁGINA 9: LIDANDO COM O GATEKEEPER -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Scripts</span>
-        </div>
-
-        <h2 class="chapter-title">Passando pela<br>Secretária (Gatekeeper)</h2>
-        
-        <div class="prose prose-invert prose-sm max-w-none text-gray-300">
-            <p>A secretária é treinada para bloquear vendedores. Para passar, você não pode parecer um vendedor. Você deve soar como um executivo importante.</p>
-
-            <h3 class="sub-title">Técnica 1: O "Já nos conhecemos" (Tom de voz)</h3>
-            <div class="script-box">
-                <strong>GK:</strong> "Empresa tal, bom dia."<br>
-                <strong>Você:</strong> "Bom dia. O Rogério está? É o Carlos."<br>
-                <span class="text-gray-500 text-xs italic">(Fale apenas o primeiro nome, com tom casual e tédio, como se ligasse todo dia. Não diga a empresa nem o sobrenome a menos que perguntado).</span><br><br>
-                <strong>GK:</strong> "De onde fala?"<br>
-                <strong>Você:</strong> "Da BL Company. Ele está na sala dele?"
-            </div>
-
-            <h3 class="sub-title">Técnica 2: A Ajuda Técnica</h3>
-            <div class="script-box">
-                <strong>Você:</strong> "Oi, bom dia. Preciso de uma ajuda sua e não sei se você é a pessoa certa. Eu preciso enviar um documento técnico para o diretor responsável pela área comercial, mas não quero mandar para o e-mail geral e cair no spam. Quem é a pessoa que cuida disso hoje aí?"
-            </div>
-        </div>
-
-        <div class="page-footer">
-            <span>Gatekeeper</span>
-            <span>09</span>
-        </div>
-    </div>
-
-    <!-- PÁGINA 10: WHATSAPP - A ARTE DO ÁUDIO -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Canais Digitais</span>
-        </div>
-
-        <h2 class="chapter-title">Prospecção via WhatsApp</h2>
-        <div class="prose prose-invert prose-sm max-w-none text-gray-300">
-            <p>O WhatsApp é um canal íntimo. Textos longos ("textões") são ignorados ou bloqueados. A estratégia da BL é usar o <strong>Áudio Personalizado</strong>.</p>
-
-            <h3 class="sub-title">O Fluxo de Abordagem no Zap</h3>
+            if (currentScroll > 100) {
+                header.style.boxShadow = '0 2px 20px rgba(90, 107, 76, 0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
             
-            <div class="concept-box">
-                <ol class="list-decimal pl-4 space-y-2 text-sm">
-                    <li><strong>Toque Inicial (Texto):</strong> "Oi [Nome], tudo bem?" (Só isso. Espere o 'double check' azul ou a resposta).</li>
-                    <li><strong>O Áudio (45 seg max):</strong> Assim que ele visualizar, grave um áudio. Não encaminhe áudio pronto.</li>
-                </ol>
-            </div>
-
-            <div class="script-box">
-                <strong>[ÁUDIO]:</strong> "Oi [Nome], desculpa te mandar áudio assim do nada. Aqui é o [Seu Nome] da BL.<br>
-                Tô entrando em contato porque analisei o perfil da sua empresa e vi que vocês tem uma estrutura muito parecida com um cliente que atendemos, a [Case].<br>
-                A gente conseguiu resolver [Problema X] lá. Não sei se é o momento de vocês, mas queria 5 minutos pra te contar essa ideia. Se fizer sentido a gente avança, se não, a gente encerra. O que acha?"
-            </div>
-        </div>
-
-        <div class="page-footer">
-            <span>WhatsApp Marketing</span>
-            <span>10</span>
-        </div>
-    </div>
-
-    <!-- PÁGINA 11: ANATOMIA DO E-MAIL FRIO -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Canais Digitais</span>
-        </div>
-
-        <h2 class="chapter-title">Anatomia do<br>Cold Mail</h2>
-        
-        <div class="prose prose-invert prose-sm max-w-none text-gray-300">
-            <p>Um e-mail frio não é uma newsletter. É uma carta pessoal de um ser humano para outro. Se parecer marketing, vai para o lixo.</p>
-
-            <h3 class="sub-title">Os 4 Elementos Críticos</h3>
-            <ul class="list-none space-y-3 mt-4 text-sm">
-                <li class="bg-neutral-900 p-3 border-l-2 border-teal-500">
-                    <strong>1. Assunto (Subject Line):</strong> Curto, intrigante, sem maiúsculas excessivas. <br><em>Ex: "Ideia para a [Empresa]", "Questão sobre [Processo]", "Indicação do [Nome]"</em>
-                </li>
-                <li class="bg-neutral-900 p-3 border-l-2 border-teal-500">
-                    <strong>2. Gancho (Hook):</strong> A primeira linha deve provar que você pesquisou sobre ele. Nada de "Espero que este e-mail o encontre bem". <br><em>Ex: "Vi seu post no LinkedIn sobre..."</em>
-                </li>
-                <li class="bg-neutral-900 p-3 border-l-2 border-teal-500">
-                    <strong>3. Proposta de Valor (Value Prop):</strong> Como você resolve a dor dele (não o que você vende).
-                </li>
-                <li class="bg-neutral-900 p-3 border-l-2 border-teal-500">
-                    <strong>4. CTA (Call to Action):</strong> Um pedido de baixo atrito. <br><em>Ex: "Faz sentido conversarmos?", "Você é a pessoa certa para falar disso?"</em>
-                </li>
-            </ul>
-        </div>
-
-        <div class="page-footer">
-            <span>Cold Mail - Estrutura</span>
-            <span>11</span>
-        </div>
-    </div>
-
-    <!-- PÁGINA 12: TEMPLATES DE E-MAIL -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Templates</span>
-        </div>
-
-        <h2 class="chapter-title">Templates de E-mail<br>Prontos para Uso</h2>
-
-        <div class="script-box">
-            <span class="text-teal-400 font-bold mb-2 block">TEMPLATE 1: FOCADO EM DOR</span>
-            <strong>Assunto:</strong> Processo de [Área] na [Empresa Dele]<br><br>
-            Olá [Nome],<br><br>
-            Estava pesquisando sobre a [Empresa Dele] e vi que vocês estão crescendo a equipe de [Área].<br><br>
-            Normalmente, empresas nesse estágio de crescimento enfrentam dificuldades com [Dor Comum 1] e [Dor Comum 2]. É o caso de vocês?<br><br>
-            Na BL, ajudamos empresas como a [Cliente Parecido] a automatizar isso. Se isso for uma prioridade, você teria 10 min na quinta-feira para eu te mostrar como fizemos?
-        </div>
-
-        <div class="script-box">
-            <span class="text-teal-400 font-bold mb-2 block">TEMPLATE 2: O "BREAK-UP" (Despedida)</span>
-            <strong>Assunto:</strong> Devo encerrar seu arquivo?<br><br>
-            Olá [Nome],<br><br>
-            Tentei contato algumas vezes e não tive retorno. Assumo que [Problema que você resolve] não é uma prioridade agora, ou você está muito ocupado.<br><br>
-            Sendo assim, vou parar de tentar contato para não lotar sua caixa. Vou encerrar seu arquivo aqui.<br><br>
-            Caso queira retomar no futuro, estou por aqui.
-        </div>
-
-        <div class="page-footer">
-            <span>Cold Mail - Templates</span>
-            <span>12</span>
-        </div>
-    </div>
-
-    <!-- PÁGINA 13: SOCIAL SELLING (LINKEDIN) -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Canais Digitais</span>
-        </div>
-
-        <h2 class="chapter-title">Social Selling no<br>LinkedIn</h2>
-        <div class="prose prose-invert prose-sm max-w-none text-gray-300">
-            <p>O LinkedIn não é currículo, é ferramenta de vendas. Use para aquecer o lead antes da ligação.</p>
-
-            <h3 class="sub-title">A Estratégia "Cercar e Invadir"</h3>
-            <div class="grid grid-cols-1 gap-4 mt-4">
-                <div class="flex items-center bg-neutral-900 p-3 rounded">
-                    <span class="bg-teal-500 text-black font-bold w-8 h-8 rounded-full flex items-center justify-center mr-4">1</span>
-                    <p class="text-sm">Visite o perfil do lead (ele recebe notificação).</p>
-                </div>
-                <div class="flex items-center bg-neutral-900 p-3 rounded">
-                    <span class="bg-teal-500 text-black font-bold w-8 h-8 rounded-full flex items-center justify-center mr-4">2</span>
-                    <p class="text-sm">Siga o lead e ative o "sininho" para ver posts dele.</p>
-                </div>
-                <div class="flex items-center bg-neutral-900 p-3 rounded">
-                    <span class="bg-teal-500 text-black font-bold w-8 h-8 rounded-full flex items-center justify-center mr-4">3</span>
-                    <p class="text-sm">Comente em um post recente com uma pergunta inteligente (Gera reciprocidade).</p>
-                </div>
-                <div class="flex items-center bg-neutral-900 p-3 rounded">
-                    <span class="bg-teal-500 text-black font-bold w-8 h-8 rounded-full flex items-center justify-center mr-4">4</span>
-                    <p class="text-sm">Envie pedido de conexão. Nota: "Oi [Nome], vi seu post sobre X e achei interessante. Gostaria de acompanhar seu conteúdo." (NÃO VENDA NA CONEXÃO).</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="page-footer">
-            <span>LinkedIn Strategy</span>
-            <span>13</span>
-        </div>
-    </div>
-
-    <!-- PÁGINA 14: SEGMENTO B2B CONSULTIVO -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Segmentos</span>
-        </div>
-
-        <h2 class="chapter-title">Aplicação Prática:<br>Venda B2B Consultiva</h2>
-        <div class="prose prose-invert prose-sm max-w-none text-gray-300">
-            <p><strong>Cenário:</strong> Venda de Software, Consultoria ou Serviços de Marketing.<br><strong>Ciclo:</strong> Longo (3-6 meses).<br><strong>Ticket:</strong> Alto.</p>
-
-            <h3 class="sub-title">Ajustes no Processo</h3>
-            <div class="concept-box">
-                <ul class="list-disc pl-4 text-sm space-y-2">
-                    <li><strong>Pesquisa Prévia (Deep Dive):</strong> Gaste 15 minutos pesquisando o lead antes de ligar. Leia relatórios anuais, notícias.</li>
-                    <li><strong>Mapeamento de Stakeholders:</strong> No B2B, a decisão é colegiada. Você precisa prospectar não só o decisor, mas os influenciadores e usuários.</li>
-                    <li><strong>Venda de Insight:</strong> Comece a conversa com um dado de mercado que ele não sabe. "Você sabia que 60% das empresas do seu setor perdem dinheiro em X?"</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="page-footer">
-            <span>Segmento B2B</span>
-            <span>14</span>
-        </div>
-    </div>
-
-    <!-- PÁGINA 15: SEGMENTO B2C / VAREJO -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Segmentos</span>
-        </div>
-
-        <h2 class="chapter-title">Aplicação Prática:<br>Varejo & B2C</h2>
-        <div class="prose prose-invert prose-sm max-w-none text-gray-300">
-            <p><strong>Cenário:</strong> Venda de cursos, produtos físicos, seguros para PF.<br><strong>Ciclo:</strong> Curto (Imediato a 1 semana).<br><strong>Ticket:</strong> Baixo/Médio.</p>
-
-            <h3 class="sub-title">Ajustes no Processo</h3>
-            <div class="concept-box">
-                <ul class="list-disc pl-4 text-sm space-y-2">
-                    <li><strong>Velocidade é Tudo:</strong> O lead esfria em minutos. A cadência deve ser concentrada nos primeiros 3 dias.</li>
-                    <li><strong>WhatsApp First:</strong> É o canal preferencial. Use mensagens curtas e diretas.</li>
-                    <li><strong>Escassez:</strong> Funciona muito bem aqui. "Tenho a última vaga/unidade".</li>
-                </ul>
-            </div>
-
-            <div class="script-box">
-                <strong>Script WhatsApp B2C:</strong><br>
-                "Oi [Nome]! Vi que você se cadastrou pra saber sobre [Produto]. Tenho uma condição especial que libera hoje. Consegue falar agora?"
-            </div>
-        </div>
-
-        <div class="page-footer">
-            <span>Segmento B2C</span>
-            <span>15</span>
-        </div>
-    </div>
-
-    <!-- PÁGINA 16: SEGMENTO HIGH TICKET -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Segmentos</span>
-        </div>
-
-        <h2 class="chapter-title">Aplicação Prática:<br>High Ticket</h2>
-        <div class="prose prose-invert prose-sm max-w-none text-gray-300">
-            <p><strong>Cenário:</strong> Imóveis de luxo, Carros importados, Mentorias exclusivas.</p>
-
-            <h3 class="sub-title">A Estratégia da "Não-Venda"</h3>
-            <p class="text-sm mb-4">Clientes de alto padrão odeiam sentir que estão sendo vendidos. Eles querem comprar. A postura deve ser de consultor de luxo, não de vendedor.</p>
-
-            <div class="tip-box">
-                <i class="fas fa-gem text-teal-400 text-xl"></i>
-                <div>
-                    <strong>Exclusividade:</strong> Não esteja sempre disponível. "Deixe-me checar se minha agenda permite te atender na terça."
-                </div>
-            </div>
-
-            <div class="script-box">
-                <strong>Script High Ticket:</strong><br>
-                "Fulano, esse projeto é exclusivo e não aceitamos todos os clientes, pois precisamos garantir o resultado. Vou te fazer algumas perguntas para ver se você se qualifica para entrar, ok?" <br>
-                <span class="text-gray-500 italic">(Inversão de papéis: O cliente passa a tentar se vender para você).</span>
-            </div>
-        </div>
-
-        <div class="page-footer">
-            <span>Segmento High Ticket</span>
-            <span>16</span>
-        </div>
-    </div>
-
-    <!-- PÁGINA 17: GATILHOS MENTAIS NA ABERTURA -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Psicologia</span>
-        </div>
-
-        <h2 class="chapter-title">Gatilhos Mentais<br>de Abertura</h2>
-        
-        <div class="grid grid-cols-2 gap-6 mt-8">
-            <div class="border border-neutral-800 p-4">
-                <h4 class="text-teal-400 font-bold mb-2">1. Prova Social</h4>
-                <p class="text-xs text-gray-400 mb-2">As pessoas seguem a manada.</p>
-                <p class="text-xs text-white italic">"Empresas como [Cliente A] e [Cliente B] já usam nossa solução..."</p>
-            </div>
-            <div class="border border-neutral-800 p-4">
-                <h4 class="text-teal-400 font-bold mb-2">2. Autoridade</h4>
-                <p class="text-xs text-gray-400 mb-2">Demonstre que você é especialista.</p>
-                <p class="text-xs text-white italic">"Li seu relatório anual e notei um gap na logística..." (Mostra que estudou).</p>
-            </div>
-            <div class="border border-neutral-800 p-4">
-                <h4 class="text-teal-400 font-bold mb-2">3. Urgência</h4>
-                <p class="text-xs text-gray-400 mb-2">O medo de perder.</p>
-                <p class="text-xs text-white italic">"Essa condição fiscal muda no próximo mês, por isso liguei hoje."</p>
-            </div>
-            <div class="border border-neutral-800 p-4">
-                <h4 class="text-teal-400 font-bold mb-2">4. Porquê</h4>
-                <p class="text-xs text-gray-400 mb-2">O cérebro busca razão.</p>
-                <p class="text-xs text-white italic">"Estou te ligando PORQUE vi que você contratou um novo diretor..."</p>
-            </div>
-        </div>
-
-        <div class="page-footer">
-            <span>Psicologia de Vendas</span>
-            <span>17</span>
-        </div>
-    </div>
-
-    <!-- PÁGINA 18: FERRAMENTAS DO HUNTER -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Stack</span>
-        </div>
-
-        <h2 class="chapter-title">Ferramentas do Hunter</h2>
-        <p class="text-sm text-gray-300 mb-6">Para escalar a prospecção, você precisa de tecnologia. Sugestões de stack:</p>
-
-        <ul class="space-y-4 text-sm text-gray-300">
-            <li class="flex items-start">
-                <span class="w-24 font-bold text-white shrink-0">CRM:</span>
-                <span>HubSpot, Pipedrive ou Salesforce. (Obrigatório).</span>
-            </li>
-            <li class="flex items-start">
-                <span class="w-24 font-bold text-white shrink-0">Listas:</span>
-                <span>LinkedIn Sales Navigator, Apollo.io, Snov.io (Para encontrar e-mails e telefones).</span>
-            </li>
-            <li class="flex items-start">
-                <span class="w-24 font-bold text-white shrink-0">Automação:</span>
-                <span>Lemlist (Email), Waalaxy (LinkedIn), Zenvia (WhatsApp).</span>
-            </li>
-            <li class="flex items-start">
-                <span class="w-24 font-bold text-white shrink-0">Inteligência:</span>
-                <span>Crystal Knows (Analisa perfil comportamental DISC do lead no LinkedIn).</span>
-            </li>
-        </ul>
-
-        <div class="alert-box mt-8">
-            Ferramentas não salvam processo ruim. Primeiro domine o script no papel e telefone, depois automatize.
-        </div>
-
-        <div class="page-footer">
-            <span>Ferramentas & Tech</span>
-            <span>18</span>
-        </div>
-    </div>
-
-    <!-- PÁGINA 19: KPIs DE PROSPECÇÃO -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Métricas</span>
-        </div>
-
-        <h2 class="chapter-title">KPIs: O Que Medir</h2>
-        <div class="prose prose-invert prose-sm max-w-none text-gray-300">
-            <p>Você não controla o resultado (venda), você controla a atividade. Na prospecção, meça:</p>
-
-            <table class="w-full text-xs text-left border-collapse mt-6">
-                <thead>
-                    <tr class="bg-teal-900 text-white">
-                        <th class="p-3 border border-neutral-700">Métrica</th>
-                        <th class="p-3 border border-neutral-700">Definição</th>
-                        <th class="p-3 border border-neutral-700">Meta Saudável (Benchmark)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="p-3 border border-neutral-800 font-bold text-teal-400">Volume de Atividades</td>
-                        <td class="p-3 border border-neutral-800">Calls + Emails + Zaps por dia.</td>
-                        <td class="p-3 border border-neutral-800">60 a 100 / dia (SDR Full time)</td>
-                    </tr>
-                    <tr>
-                        <td class="p-3 border border-neutral-800 font-bold text-teal-400">Taxa de Conexão</td>
-                        <td class="p-3 border border-neutral-800">Quantas ligações foram atendidas.</td>
-                        <td class="p-3 border border-neutral-800">10% a 20%</td>
-                    </tr>
-                    <tr>
-                        <td class="p-3 border border-neutral-800 font-bold text-teal-400">Conversão em Reunião (SAL)</td>
-                        <td class="p-3 border border-neutral-800">Dos que atenderam, quantos agendaram.</td>
-                        <td class="p-3 border border-neutral-800">10% a 30%</td>
-                    </tr>
-                    <tr>
-                        <td class="p-3 border border-neutral-800 font-bold text-teal-400">No-Show Rate</td>
-                        <td class="p-3 border border-neutral-800">Agendou mas não apareceu.</td>
-                        <td class="p-3 border border-neutral-800">< 20% (Acima disso, melhore a qualificação)</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="page-footer">
-            <span>KPIs & Métricas</span>
-            <span>19</span>
-        </div>
-    </div>
-
-    <!-- PÁGINA 20: CHECKLIST FINAL PARTE 1 -->
-    <div class="a4-page">
-        <div class="page-header">
-            <span class="text-white font-bold font-heading">BL COMPANY</span>
-            <span class="text-teal-400 font-bold text-sm uppercase">Conclusão</span>
-        </div>
-
-        <h2 class="chapter-title">Checklist de Aprovação<br>Módulo 1</h2>
-        <p class="text-sm text-gray-300 mb-6">Antes de avançar para a negociação, sua equipe de pré-vendas (SDRs) deve dominar:</p>
-
-        <div class="space-y-4">
-            <div class="flex items-start">
-                <input type="checkbox" class="mt-1 mr-3 accent-teal-500 w-5 h-5">
-                <span class="text-sm text-gray-300">Definiram claramente o ICP e rejeitam leads fora do perfil?</span>
-            </div>
-            <div class="flex items-start">
-                <input type="checkbox" class="mt-1 mr-3 accent-teal-500 w-5 h-5">
-                <span class="text-sm text-gray-300">Estão executando o fluxo de cadência de 7 a 12 toques sem desistir?</span>
-            </div>
-            <div class="flex items-start">
-                <input type="checkbox" class="mt-1 mr-3 accent-teal-500 w-5 h-5">
-                <span class="text-sm text-gray-300">Sabem aplicar o Script de Cold Call com naturalidade (sem ler)?</span>
-            </div>
-            <div class="flex items-start">
-                <input type="checkbox" class="mt-1 mr-3 accent-teal-500 w-5 h-5">
-                <span class="text-sm text-gray-300">Estão batendo a meta de atividades diárias (Volume)?</span>
-            </div>
-            <div class="flex items-start">
-                <input type="checkbox" class="mt-1 mr-3 accent-teal-500 w-5 h-5">
-                <span class="text-sm text-gray-300">O CRM está 100% preenchido com os dados de qualificação?</span>
-            </div>
-        </div>
-
-        <div class="mt-12 p-6 border border-teal-500 text-center">
-            <h3 class="text-2xl font-heading font-bold text-white mb-2">Fim da Parte 1</h3>
-            <p class="text-gray-400 text-sm">
-                Agora que o funil está cheio de oportunidades qualificadas, vamos aprender a conduzir a reunião e fechar o negócio.
-            </p>
-            <p class="text-teal-400 font-bold mt-4 uppercase text-xs tracking-widest">Próximo: Diagnóstico & SPIN Selling</p>
-        </div>
-
-        <div class="page-footer">
-            <span>Conclusão Parte 1</span>
-            <span>20</span>
-        </div>
-    </div>
-
+            lastScroll = currentScroll;
+        });
+    </script>
 </body>
 </html>
